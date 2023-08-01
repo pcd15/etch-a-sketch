@@ -12,7 +12,7 @@ function createGrid(dimensions) {
 }
 
 function white() {
-    this.style.backgroundColor = 'white';
+    this.setAttribute('style', 'background-color: rgb(235, 235, 235);');
 }
 
 function changeColor() {
