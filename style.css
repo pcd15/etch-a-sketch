@@ -54,9 +54,9 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 120px;
-    margin-top: 20px;
-    margin-bottom: -20px;
+    gap: 40px;
+    margin-top: 10px;
+    margin-bottom: -10px;
 }
 
 .circle {
@@ -73,11 +73,11 @@ body {
 
 .button {
     font-family: 'Reem Kufi Fun', sans-serif;
-    height: 50px;
-    width: 100px;
+    height: 60px;
+    width: 120px;
     border: none;
     border-radius: 4px;
-    font-size: 15px;
+    font-size: 18px;
     background-color: rgb(235, 235, 235);
 }
 

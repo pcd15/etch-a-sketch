@@ -11,24 +11,37 @@ function createGrid(dimensions) {
     }
 }
 
+function white() {
+    this.style.backgroundColor = 'white';
+}
+
 function changeColor() {
     const randomColor = Math.floor(Math.random() * 16777215).toString(16);
     this.style.backgroundColor = "#" + randomColor;
 }
 
-// function reset() {
-//     grid.innerHTML = null;
-//     createGrid(16);
-// }
+function reset() {
+    grid.innerHTML = null;
+    createGrid(16);
+    pixels = document.querySelectorAll('.pixel');
+    pixels.forEach(pixel => pixel.addEventListener('mouseover', changeColor));
+}
 
-// function changeDimensions() {
-//     let dimensions = prompt("Enter a new size for the Etch A Sketch pixels between 1 and 100, inclusive.");
-//     while (dimensions < 1 || dimensions > 100) {
-//         dimensions = prompt("Enter a number greater than 0 and less than or equal to 100.")
-//     }
-//     grid.innerHTML = null;
-//     createGrid(dimensions);
-// }
+function changeDimensions() {
+    let dimensions = prompt("Enter a new size between 1 and 100, inclusive, for the Etch A Sketch pixels.");
+    while (dimensions < 1 || dimensions > 100) {
+        dimensions = prompt("Enter a number greater than 0 and less than or equal to 100.")
+    }
+    grid.innerHTML = null;
+    createGrid(dimensions);
+    pixels = document.querySelectorAll('.pixel');
+    pixels.forEach(pixel => pixel.addEventListener('mouseover', changeColor));
+}
+
+function erase() {
+    pixels.forEach(pixel => pixel.removeEventListener('mouseover', changeColor));
+    pixels.forEach(pixel => pixel.addEventListener('mouseover', white));
+}
 
 const title = document.querySelector('#title');
 const text = title.textContent;
@@ -44,11 +57,14 @@ setInterval(() => {
 const grid = document.querySelector("#grid");
 createGrid(16);
 
-const pixels = document.querySelectorAll('.pixel');
+let pixels = document.querySelectorAll('.pixel');
 pixels.forEach(pixel => pixel.addEventListener('mouseover', changeColor));
 
-// const reset = document.querySelector('.reset');
-// reset.addEventListener('click', reset);
+const resetBtn = document.querySelector('.reset');
+resetBtn.addEventListener('click', reset);
 
-// const dimension = document.querySelector('.dimension');
-// dimension.addEventListener('click', changeDimensions);
+const dimension = document.querySelector('.dimension');
+dimension.addEventListener('click', changeDimensions);
+
+const eraseBtn = document.querySelector('.erase');
+eraseBtn.addEventListener('click', erase);
